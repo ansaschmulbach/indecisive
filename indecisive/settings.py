@@ -15,8 +15,6 @@ import os
 from dotenv import load_dotenv
 import django_heroku
 
-
-django_heroku.settings(locals())
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -124,7 +122,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
@@ -142,3 +139,5 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 import dj_database_url
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
+
+django_heroku.settings(locals())
