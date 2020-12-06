@@ -1,0 +1,1 @@
+web: gunicorn indecisive.wsgi --log-file -
