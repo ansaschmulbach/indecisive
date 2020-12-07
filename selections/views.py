@@ -5,6 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import RestaurantSerializer
 from .models import Restaurant
+import requests
 
 @api_view(['GET'])
 def selectionsOverview(request):
@@ -44,3 +45,11 @@ def deleteRestaurant(request, id):
     #request.data sends a json object
     restaurants = Restaurant.objects.get(id=id)
     restaurants.delete()
+
+@api_view(['GET'])
+def yelp(request):
+    response = requests.get('https://api.yelp.com/v3/businesses/search/Berkeley')
+    data = response.json()
+    return Response(data)
+
+

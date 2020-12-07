@@ -15,11 +15,13 @@ import os
 from dotenv import load_dotenv
 import django_heroku
 
-load_dotenv()
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+#Heroku now
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    load_dotenv(dotenv_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -122,6 +124,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+#to make Yelp API calls
+YELP_CLIENT_ID = os.getenv('YELP_CLIENT_ID', default='')
+YELP_API_KEY = os.getenv('YELP_API_KEY', default='')
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
@@ -141,3 +148,6 @@ prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
 
 django_heroku.settings(locals())
+
+options = DATABASES['default'].get('OPTIONS', {})
+options.pop('sslmode', None)
