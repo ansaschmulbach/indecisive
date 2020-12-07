@@ -13,5 +13,6 @@ urlpatterns = [
     path('create-category/', views.createCategory, name="selections-create"),
     path('create-menu-item/', views.createMenuItem, name="selections-create"),
     path('create-allergen-info/', views.createAllergenInfo, name="selections-create"),
+    path('filter-menu/<str:id>/', views.filter_with_menu_id, name="filter-menu"),
     path('selections-yelp/', views.yelp, name="selections-yelp")
 ]

@@ -22,6 +22,14 @@ def selectionsOverview(request):
     return Response(selections_urls)
 
 @api_view(['GET'])
+def filter_with_menu_id(request, id):
+    menu_items = MenuItem.objects.filter(id=id)[0]
+    restaurants = Restaurant.objects.filter(menu=menu_items)
+    serializer = RestaurantSerializer(restaurants, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
 def restaurantView(request):
     restaurants = Restaurant.objects.all()
     serializer = RestaurantSerializer(restaurants, many=True)
