@@ -42,7 +42,7 @@ def menuItemsView(request):
 @api_view(['GET'])
 def allergenInfoView(request):
     allergenInfo = AllergenInfo.objects.all()
-    serializer = MenuItemSerializer(allergenInfo, many=True)
+    serializer = AllergenSerializer(allergenInfo, many=True)
     return Response(serializer.data)
 
 
