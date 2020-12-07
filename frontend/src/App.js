@@ -18,11 +18,10 @@ const App = () => {
         <Route path="/Register">
           <Register />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <Landing />
         </Route>
-        <Route default> 
-        {/* Default isn't working for some reason, need to fix it. */}
+        <Route>
           <NotFound />
         </Route>
       </Switch>

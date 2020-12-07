@@ -1,8 +1,6 @@
-*{
+body{
   box-sizing: border-box;
   font-family: 'Manrope', sans-serif;
-  background: #F1F0F0;
-
 }
 /* Landing Page CSS */
 
@@ -11,6 +9,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1.7fr 2.8fr 1.8fr 3.7fr ;
   height: 100vh;
+  background: #F1F0F0;
 }
 
 section.logo{
