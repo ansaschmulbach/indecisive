@@ -1,5 +1,9 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import redirect
+import random
+
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -102,6 +106,20 @@ def deleteRestaurant(request, id):
     restaurants = Restaurant.objects.get(id=id)
     restaurants.delete()
 
+# User Login
+@api_view(['GET'])
+def login_request(request, user_id, password):
+    user = authenticate(username=user_id, password=password)
+    if user is not None:
+        login(request, user)
+        rand = random.randint(1, MenuItem.objects.count())
+        return redirect("main:filter-menu", rand)
+    return redirect("main:selections-overview")
+
+@api_view(['GET'])
+def logout_request(request):
+    logout(request)
+    return redirect("main:selections-overview")
 
 @api_view(['GET'])
 def yelp(request):

@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+app_name = 'main'
+
 urlpatterns = [
     path('', views.selectionsOverview, name="selections-overview"),
     path('selections-view/', views.restaurantView, name="selections-view"),
@@ -15,7 +17,8 @@ urlpatterns = [
     path('create-allergen-info/', views.createAllergenInfo, name="create-allergen-info"),
     path('filter-menu/<str:id>/', views.filter_with_menu_id, name="filter-menu"),
     path('num-menu-items/', views.num_menu_id, name="num_menu_items"),
-
+    path('login/<str:user_id>/<str:password>/', views.login_request, name="login"),
+    path('logout/', views.logout_request, name="logout"),
 
     path('selections-yelp/', views.yelp, name="selections-yelp")
 ]

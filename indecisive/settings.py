@@ -32,7 +32,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://wdb-indecisive.herokuapp.com/', "http://localhost:3000"]
+ALLOWED_HOSTS = ['https://wdb-indecisive.herokuapp.com', "http://localhost:3000"]
 CORS_ORIGIN_WHITELIST = ALLOWED_HOSTS
 
 # Application definition

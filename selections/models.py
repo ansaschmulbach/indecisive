@@ -25,6 +25,6 @@ class Restaurant(models.Model):
     latitude = models.DecimalField(max_digits=9, decimal_places=6)
     longitude = models.DecimalField(max_digits=9, decimal_places=6)
     rating = models.DecimalField(max_digits=3, decimal_places=2)
-    menu = models.ManyToManyField(MenuItem, null=True)
+    menu = models.ManyToManyField(MenuItem)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
 
